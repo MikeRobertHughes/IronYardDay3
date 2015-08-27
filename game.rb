@@ -1,4 +1,4 @@
-
+require 'pry'
 class Card
 
   def initialize(suit, value)
@@ -65,14 +65,16 @@ class Player
   end
 
   def hand
-    # x = hand_size.to_i
+    # x = @hand.hand_size.to_i
     # @hand_string = ""
     # while x >= 0
     #   @hand_string += @hand[x].get_value + ", "
     #   x -= 1
     # end
-    # return
-    @hand
+    # return @hand_string
+    # @hand
+    # binding.pry
+    @hand.join(", ")
   end
 
   def hand_value
@@ -81,12 +83,14 @@ class Player
     while x >= 0
       if @hand[x].get_value.is_a?(Fixnum)
         @total_value += @hand[x].get_value
+      elsif @hand[x].get_value == "A"
+        @total_value += 11
       else
         @total_value += 10
       end
       x -= 1
     end
-    return @total_value
+    @total_value
   end
 end
 
@@ -99,21 +103,23 @@ if answer == "yes" || answer == "y"
   dealer = Player.new
   deck.shuffle
   puts "Welcome to the future of gaming!!!! This. Is. Black Jack.!"
-  puts "************* Ready Player One *************"
+  puts "\n************* Ready Player One *************\n\n"
   player.accept_card(deck.deal_card)
   player.accept_card(deck.deal_card)
+  dealer.accept_card(deck.deal_card)
   puts "You have been dealt #{player.hand_size} cards."
-  puts "You have a #{player.hand[0]} and a #{player.hand[1]} for a total of #{player.hand_value}."
+  puts "The dealer is showing a #{dealer.hand}."
+  puts "You have a #{player.hand} for a total of #{player.hand_value}."
   puts "Would you like to (S)tay or (H)it?"
   deal = gets.chomp.downcase
   if deal == "h" || deal == "hit"
     player.accept_card(deck.deal_card)
-    puts "You now have a #{player.hand[2]} for a total of #{player.hand_value}."
+    puts "You now have a #{player.hand} for a total of #{player.hand_value}."
   elsif deal == "s" || deal == "stay"
     puts "The dealer is now playing"
     puts "The dealer has a "
   else
-    puts "That's not an option smartass, good bye..."
+    puts "That's not an option, good bye..."
   end
 
 else
