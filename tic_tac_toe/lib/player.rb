@@ -1,6 +1,7 @@
 require 'pry'
 
 class Player
+
   def initialize
     @hand = []
     @total_value = 0
