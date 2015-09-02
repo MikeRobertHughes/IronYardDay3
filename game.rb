@@ -17,6 +17,8 @@ end
 
 class Deck
 
+  attr_accessor :deck
+
   def initialize
     @deck = []
     suits = [:hearts, :diamonds, :spades, :clubs]
@@ -94,7 +96,7 @@ class Player
   end
 end
 
-puts "Hello, would you like to play black jack?"
+puts "Hello, would you like to play black jack? y/n :"
 
 answer = gets.chomp.downcase
 if answer == "yes" || answer == "y"
@@ -108,7 +110,7 @@ if answer == "yes" || answer == "y"
   player.accept_card(deck.deal_card)
   dealer.accept_card(deck.deal_card)
   puts "You have been dealt #{player.hand_size} cards."
-  puts "The dealer is showing a #{dealer.hand}."
+  puts "The dealer is showing: #{dealer.hand}."
   puts "You have a #{player.hand} for a total of #{player.hand_value}."
   puts "Would you like to (S)tay or (H)it?"
   deal = gets.chomp.downcase
