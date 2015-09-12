@@ -44,4 +44,21 @@ class Player
     end
     @total_value
   end
+
+  def win(winning_total)
+    puts "You totes got #{winning_total} broseph! SIIIIIIIICK!!!!"
+    system("say You totes got #{winning_total} broseph! siiiick!!")
+    puts "Oh yeah brah! You just won hella skrill! Buy me a Natty Ice NOW!!! Woo!"
+    system('say Oh yeah brah! You just won hella skrill! Buy me a Natty Ice now!!! Woo!')
+  end
+
+  def lose
+    puts "U mad bro?"
+    system('say U mad bro?')
+    system('sleep 1')
+    puts "Bum luck duder..it looks like you lost. Let's go get a PBR..."
+    puts "and play some gamecube."
+    system('say Bum luck duder. It looks like you lost. Lets go get a PBR')
+    system('say and play some gamecube')
+  end
 end
