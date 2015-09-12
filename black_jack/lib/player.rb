@@ -2,6 +2,8 @@ require 'pry'
 
 class Player
 
+  attr_reader :hand
+
   def initialize
     @hand = []
     @total_value = 0
@@ -16,7 +18,7 @@ class Player
     "#{x}"
   end
 
-  def hand
+  def show_hand
     # x = @hand.hand_size.to_i
     # @hand_string = ""
     # while x >= 0
